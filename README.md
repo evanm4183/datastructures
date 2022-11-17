@@ -1,2 +1,2 @@
 # datastructures
-My custom implementations for common data structures for the purpose of learning
+Learning data structures by making my own implementations here
