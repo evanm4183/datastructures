@@ -13,7 +13,7 @@ class Leaf:
             print(f'Left: {self.left}')
 
         if (self.right is not None):
-            print(f'Left: {self.right.val}')
+            print(f'Right: {self.right.val}')
         else:
             print(f'Right: {self.right}')
         
