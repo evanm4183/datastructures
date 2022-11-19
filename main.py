@@ -12,3 +12,5 @@ print(f'Inorder: {inorder_list}')
 
 postorder_list = new_tree.postorder()
 print(f'Postorder: {postorder_list}')
+
+print(new_tree.contains(5))

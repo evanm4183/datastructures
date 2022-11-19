@@ -26,6 +26,20 @@ class Tree:
         for num in list:
             self.insert(num)
 
+    # returns True or False depending on if the value is contained in the tree
+    def contains(self, val):
+        def compare(leaf, val):
+            if leaf is None:
+                return False
+            elif val == leaf.val:
+                return True
+            elif val < leaf.val:
+                return compare(leaf.left, val)
+            elif val > leaf.val:
+                return compare(leaf.right, val)
+
+        return compare(self.root, val)
+
     # returns a list with the preorder traversal of the tree
     def preorder(self):
         def get_preorder(leaf, vals):
