@@ -1,5 +1,6 @@
 from binarytree.leaf import Leaf
 
+# binary search tree for numbers
 class Tree:
     def __init__(self, val):
         self.root = Leaf(val)
@@ -24,3 +25,48 @@ class Tree:
     def insert_list(self, list):
         for num in list:
             self.insert(num)
+
+    # returns a list with the preorder traversal of the tree
+    def preorder(self):
+        def get_preorder(leaf, vals):
+            if leaf is not None:
+                vals.append(leaf.val)
+                get_preorder(leaf.left, vals)
+                get_preorder(leaf.right, vals)
+
+            return vals
+
+        return get_preorder(self.root, [])
+
+    # returns a list with the inorder traversal of the tree
+    def inorder(self):
+        def get_inorder(leaf, vals):
+            if leaf is not None:
+                get_inorder(leaf.left, vals)
+                vals.append(leaf.val)
+                get_inorder(leaf.right, vals)
+
+            return vals
+
+        return get_inorder(self.root, [])
+
+    # returns a list with the postorder traversal of the tree
+    def postorder(self):
+        def get_postorder(leaf, vals):
+            if leaf is not None:
+                get_postorder(leaf.left, vals)
+                get_postorder(leaf.right, vals)
+                vals.append(leaf.val)
+
+            return vals
+
+        return get_postorder(self.root, [])
+
+            
+            
+
+
+
+
+
+
