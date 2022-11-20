@@ -1,52 +1,64 @@
-from binarytree.leaf import Leaf
+from binarytree.leaf import Node
 
 # binary search tree for numbers
 class Tree:
     def __init__(self, val):
-        self.root = Leaf(val)
+        self.root = Node(val)
 
     # method for inserting a number into the tree
     def insert(self, val):
-        def insert_leaf(curr_leaf, val):
-            if val == curr_leaf.val:
+        def insert_node(curr_node, val):
+            if val == curr_node.val:
                 return
-            elif val < curr_leaf.val and curr_leaf.left is None:
-                curr_leaf.left = Leaf(val)
-            elif val > curr_leaf.val and curr_leaf.right is None:
-                curr_leaf.right = Leaf(val)
-            elif val < curr_leaf.val:
-                insert_leaf(curr_leaf.left, val)
-            elif val > curr_leaf.val:
-                insert_leaf(curr_leaf.right, val)
+            elif val < curr_node.val and curr_node.left is None:
+                curr_node.left = Node(val)
+            elif val > curr_node.val and curr_node.right is None:
+                curr_node.right = Node(val)
+            elif val < curr_node.val:
+                insert_node(curr_node.left, val)
+            elif val > curr_node.val:
+                insert_node(curr_node.right, val)
 
-        insert_leaf(self.root, val)
+        insert_node(self.root, val)
 
     # method for inserting a list of numbers into the tree
     def insert_list(self, list):
         for num in list:
             self.insert(num)
 
+    # deletes the node with the given value from the tree
+    def delete_leaf(self, val):
+        def search_and_destroy(node, val):
+            if node is None:
+                return 'Value does not exist within tree'
+            elif val == node.val:
+                return 'Delete successful'
+            elif val < node.val:
+                pass
+            elif val > node.val:
+                pass
+
     # returns True or False depending on if the value is contained in the tree
     def contains(self, val):
-        def compare(leaf, val):
-            if leaf is None:
+        def compare(node, val):
+            if node is None:
                 return False
-            elif val == leaf.val:
+            elif val == node.val:
                 return True
-            elif val < leaf.val:
-                return compare(leaf.left, val)
-            elif val > leaf.val:
-                return compare(leaf.right, val)
+            elif val < node.val:
+                return compare(node.left, val)
+            elif val > node.val:
+                return compare(node.right, val)
 
         return compare(self.root, val)
 
     # returns a list with the preorder traversal of the tree
     def preorder(self):
-        def get_preorder(leaf, vals):
-            if leaf is not None:
-                vals.append(leaf.val)
-                get_preorder(leaf.left, vals)
-                get_preorder(leaf.right, vals)
+        def get_preorder(node, vals):
+            if node is not None:
+                vals.append(node.val)
+                get_preorder(node.left, vals)
+                get_preorder(node.right, vals)
 
             return vals
 
@@ -54,11 +66,11 @@ class Tree:
 
     # returns a list with the inorder traversal of the tree
     def inorder(self):
-        def get_inorder(leaf, vals):
-            if leaf is not None:
-                get_inorder(leaf.left, vals)
-                vals.append(leaf.val)
-                get_inorder(leaf.right, vals)
+        def get_inorder(node, vals):
+            if node is not None:
+                get_inorder(node.left, vals)
+                vals.append(node.val)
+                get_inorder(node.right, vals)
 
             return vals
 
@@ -66,11 +78,11 @@ class Tree:
 
     # returns a list with the postorder traversal of the tree
     def postorder(self):
-        def get_postorder(leaf, vals):
-            if leaf is not None:
-                get_postorder(leaf.left, vals)
-                get_postorder(leaf.right, vals)
-                vals.append(leaf.val)
+        def get_postorder(node, vals):
+            if node is not None:
+                get_postorder(node.left, vals)
+                get_postorder(node.right, vals)
+                vals.append(node.val)
 
             return vals
 

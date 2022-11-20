@@ -1,5 +1,5 @@
 from binarytree.tree import Tree
-from binarytree.leaf import Leaf
+from binarytree.leaf import Node
 
 new_tree = Tree(10)
 new_tree.insert_list([5, 15, 2, 7, 12, 17, 3, 6, 11, 14])

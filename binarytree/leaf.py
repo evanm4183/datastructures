@@ -1,10 +1,10 @@
-class Leaf:
+class Node:
     def __init__(self, val):
         self.val = val
         self.left = None
         self.right = None
 
-    def display_leaf(self):
+    def display_node(self):
         print(f'Self: {self.val}')
 
         if (self.left is not None):
