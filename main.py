@@ -1,16 +1,11 @@
 from binarytree.tree import Tree
 from binarytree.leaf import Node
 
-new_tree = Tree(10)
-new_tree.insert_list([5, 15, 2, 7, 12, 17, 3, 6, 11, 14])
+simple_tree = Tree(20)
+simple_tree.insert_list([10, 30, 40, 5, 25, 35, 45, 15])
 
-preorder_list = new_tree.preorder()
-print(f'Preorder: {preorder_list}')
+simple_tree.all_orders()
 
-inorder_list = new_tree.inorder()
-print(f'Inorder: {inorder_list}')
+simple_tree.delete_node(10)
 
-postorder_list = new_tree.postorder()
-print(f'Postorder: {postorder_list}')
-
-print(new_tree.contains(5))
+simple_tree.all_orders()

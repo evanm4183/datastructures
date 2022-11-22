@@ -26,17 +26,43 @@ class Tree:
         for num in list:
             self.insert(num)
 
+    # finds the smallest node of a tree or subtree
+    def find_min(self, node):
+        if node.left is None and node.right is None:
+            return node
+        elif node.left is not None:
+            return self.find_min(node.left)
+
     # deletes the node with the given value from the tree
-    def delete_leaf(self, val):
-        def search_and_destroy(node, val):
-            if node is None:
-                return 'Value does not exist within tree'
-            elif val == node.val:
-                return 'Delete successful'
-            elif val < node.val:
-                pass
-            elif val > node.val:
-                pass
+    def delete_node(self, val):
+        def del_node(root, val):
+            if root is None:
+                print(f'<ERROR: {val} does not exist within tree>')
+                return root
+            
+            if val < root.val:
+                root.left = del_node(root.left, val)
+            elif val > root.val:
+                root.right = del_node(root.right, val)
+            else:
+                if root.left is None and root.right is None:
+                    print('A')
+                    return None
+                elif root.left is None:
+                    print('B')
+                    root = root.right
+                elif root.right is None:
+                    print('C')
+                    root = root.left
+                else:
+                    min_rst_val = self.find_min(root.right).val
+                    print(min_rst_val)
+                    root.val = min_rst_val
+                    root.right = del_node(root.right, min_rst_val)
+
+            return root
+
+        self.root = del_node(self.root, val)
 
     # returns True or False depending on if the value is contained in the tree
     def contains(self, val):
@@ -87,6 +113,19 @@ class Tree:
             return vals
 
         return get_postorder(self.root, [])
+
+    # prints preorder, inorder, and postorder
+    def all_orders(self):
+        preorder_list = self.preorder()
+        print(f'Preorder: {preorder_list}')
+
+        inorder_list = self.inorder()
+        print(f'Inorder: {inorder_list}')
+
+        postorder_list = self.postorder()
+        print(f'Postorder: {postorder_list}')
+
+        print('-----------------------------------------------------')
 
             
             
