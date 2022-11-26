@@ -46,17 +46,13 @@ class Tree:
                 root.right = del_node(root.right, val)
             else:
                 if root.left is None and root.right is None:
-                    print('A')
                     return None
                 elif root.left is None:
-                    print('B')
                     root = root.right
                 elif root.right is None:
-                    print('C')
                     root = root.left
                 else:
                     min_rst_val = self.find_min(root.right).val
-                    print(min_rst_val)
                     root.val = min_rst_val
                     root.right = del_node(root.right, min_rst_val)
 
