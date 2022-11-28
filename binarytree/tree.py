@@ -1,19 +1,26 @@
-from binarytree.leaf import Node
+from binarytree.TreeNode import TreeNode
 
 # binary search tree for numbers
 class Tree:
-    def __init__(self, val):
-        self.root = Node(val)
+    root = None
+
+    # constructor takes a list of values 
+    def __init__(self, vals=[]):
+        self.insert_list(vals)
 
     # method for inserting a number into the tree
-    def insert(self, val):
+    def insert_node(self, val):
         def insert_node(curr_node, val):
+            if self.root is None:
+                self.root = TreeNode(val)
+                return
+
             if val == curr_node.val:
                 return
             elif val < curr_node.val and curr_node.left is None:
-                curr_node.left = Node(val)
+                curr_node.left = TreeNode(val)
             elif val > curr_node.val and curr_node.right is None:
-                curr_node.right = Node(val)
+                curr_node.right = TreeNode(val)
             elif val < curr_node.val:
                 insert_node(curr_node.left, val)
             elif val > curr_node.val:
@@ -24,7 +31,7 @@ class Tree:
     # method for inserting a list of numbers into the tree
     def insert_list(self, list):
         for num in list:
-            self.insert(num)
+            self.insert_node(num)
 
     # finds the smallest node of a tree or subtree
     def find_min(self, node):
