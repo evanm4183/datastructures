@@ -1,32 +1,62 @@
 from linkedlist.listnode import ListNode
 
 class LinkedList():
-    head = None
+    def __init__(self):
+        self.head = None
+        self.tail = None
 
-    def __init__(self, vals):
-        self.insert_list(vals)
+    def __populate_empty_list(self, node):
+        self.head = node
+        self.tail = node
 
-    def insert_node(self, val):
-        if self.head is None:
-            self.head = ListNode(val)
+    # inserts a list of values at the end of the linked list
+    def insert_list(self, vals):
+        if len(vals) == 0:
+            print('ERROR: Cannot insert an empty list')
             return
 
-        curr = self.head
+        if self.head is None:
+            node = ListNode(vals.pop(0))
+            self.__populate_empty_list(node)
 
-        while curr.next is not None:
-            curr = curr.next
-
-        curr.next = ListNode(val)
-
-    def insert_list(self, vals):
+        curr = self.tail
         for val in vals:
-            self.insert_node(val)
+            curr.next = ListNode(val)
+            curr = curr.next
+        self.tail = curr
 
+    # inserts a node at the beginning of the list
+    def insert_at_beginning(self, val):
+        node = ListNode(val)
+
+        if self.head is None:
+            self.__populate_empty_list(node)
+        else:
+            node.next = self.head
+            self.head = node
+
+    # inserts a node at the end of the list
+    def insert_at_end(self, val):
+        node = ListNode(val)
+
+        if self.tail is None:
+            self.__populate_empty_list(node)
+        else:
+            self.tail.next = node
+            self.tail = node
+
+    # prints the list
     def print(self):
-        curr = self.head
+        if self.head is None:
+            print('List is empty')
+            print('------------------------------------')
+            return
 
+        print(f'head: {self.head.val} | tail {self.tail.val}')
+
+        curr = self.head
         while curr is not None:
             print(f'{curr.val} -> ', end ='')
             curr = curr.next
 
-        print('')
+        print('\n------------------------------------')
