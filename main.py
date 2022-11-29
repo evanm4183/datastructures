@@ -17,3 +17,5 @@ ll.print()
 
 ll.insert_at_end(7)
 ll.print()
+
+print(ll.get_length())

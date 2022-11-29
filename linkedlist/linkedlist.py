@@ -45,6 +45,16 @@ class LinkedList():
             self.tail.next = node
             self.tail = node
 
+    def get_length(self):
+        count = 0
+        curr = self.head
+        
+        while curr is not None:
+            count += 1
+            curr = curr.next
+
+        return count
+
     # prints the list
     def print(self):
         if self.head is None:
