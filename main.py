@@ -3,6 +3,7 @@
 from linkedlist.linkedlist import LinkedList
 from linkedlist.listnode import ListNode
 
+blank_list = LinkedList()
 ll = LinkedList()
 ll.print()
 
@@ -18,4 +19,8 @@ ll.print()
 ll.insert_at_end(7)
 ll.print()
 
-print(ll.get_length())
+ll.insert_after(2, 7)
+ll.print()
+
+ll.insert_after(7, 100)
+ll.print()
