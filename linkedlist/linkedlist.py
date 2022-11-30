@@ -45,7 +45,7 @@ class LinkedList():
             self.tail.next = node
             self.tail = node
 
-    # inserts a node after a value in the linked list
+    # inserts a node after the first instance of a value in the linked list
     def insert_after(self, list_val, insert_val):
         if self.head is None:
             print('ERROR: Cannot insert after a value because list is empty')
@@ -58,15 +58,35 @@ class LinkedList():
         if curr.next is None and curr.val != list_val:
             print(f'ERROR: {list_val} does not exist within the linked list')
         elif curr.next is None:
-            curr.next = ListNode(insert_val)
-            self.tail = curr.next
+            self.insert_at_end(insert_val)
         else:
             temp = curr.next
             curr.next = ListNode(insert_val)
             curr.next.next = temp
+
+    # inserts a node before the first instance of a value in the linked list
+    def insert_before(self, list_val, insert_val):
+        if self.head is None:
+            print('ERROR: Cannot insert before a value because list is empty')
+            return
+
+        if self.head.val == list_val:
+            self.insert_at_beginning(insert_val)
+        else:
+            curr = self.head
+            while curr.next is not None and curr.next.val != list_val:
+                curr = curr.next
+            
+            # curr is the tail, therefore the value was not found within the list
+            if curr.next is None:
+                print(f'ERROR: {list_val} does not exist within the linked list')
+            else:
+                node = ListNode(insert_val)
+                temp = curr.next
+                curr.next = node
+                node.next = temp
         
-
-
+    # gets the length of the linked list
     def get_length(self):
         count = 0
         curr = self.head

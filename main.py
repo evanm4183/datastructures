@@ -13,14 +13,11 @@ ll.print()
 ll.insert_list([4, 5, 6])
 ll.print()
 
-ll.insert_at_beginning(0)
+ll.insert_before(2, 0)
 ll.print()
 
-ll.insert_at_end(7)
-ll.print()
+blank_list.insert_list([1, 2])
+blank_list.print()
 
-ll.insert_after(2, 7)
-ll.print()
-
-ll.insert_after(7, 100)
-ll.print()
+blank_list.insert_before(3, 0)
+blank_list.print()
