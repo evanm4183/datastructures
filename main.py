@@ -13,11 +13,11 @@ ll.print()
 ll.insert_list([4, 5, 6])
 ll.print()
 
-ll.insert_before(2, 0)
+ll.remove(2)
 ll.print()
 
 blank_list.insert_list([1, 2])
 blank_list.print()
 
-blank_list.insert_before(3, 0)
+blank_list.remove(5)
 blank_list.print()

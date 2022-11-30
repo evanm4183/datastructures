@@ -85,6 +85,27 @@ class LinkedList():
                 temp = curr.next
                 curr.next = node
                 node.next = temp
+
+    # removes the first instance of a value in the linked list
+    def remove(self, val):
+        if self.head is None:
+            print('ERROR: Cannot remove any values because the list is empty')
+            return
+
+        if self.head.val == val:
+            self.head = self.head.next
+        else:
+            curr = self.head
+            while curr.next is not None and curr.next.val != val:
+                curr = curr.next
+
+            if curr.next is None:
+                print(f'ERROR: {val} does not exist within the linked list')
+            elif curr.next.next is None:
+                curr.next = None
+                self.tail = curr
+            else:
+                curr.next = curr.next.next
         
     # gets the length of the linked list
     def get_length(self):
