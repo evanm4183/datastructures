@@ -106,6 +106,23 @@ class LinkedList():
                 self.tail = curr
             else:
                 curr.next = curr.next.next
+
+    # reverses the linked list in place
+    def reverse(self):
+        if self.head is not None and self.head.next is not None:
+            prev = None
+            curr = self.head
+
+            while curr is not None:
+                temp = curr.next
+                curr.next = prev
+                prev = curr
+                curr = temp
+
+            temp = self.head
+            self.head = self.tail
+            self.tail = temp
+
         
     # gets the length of the linked list
     def get_length(self):

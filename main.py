@@ -13,11 +13,13 @@ ll.print()
 ll.insert_list([4, 5, 6])
 ll.print()
 
-ll.remove(2)
+ll.reverse()
 ll.print()
 
-blank_list.insert_list([1, 2])
-blank_list.print()
+ll2 = LinkedList()
+ll2.insert_list([1, 2])
+ll2.print()
 
-blank_list.remove(5)
-blank_list.print()
+ll2.reverse()
+ll2.print()
+
