@@ -1,4 +1,4 @@
-from binarytree.TreeNode import TreeNode
+from binarytree.treenode import TreeNode
 
 # binary search tree for numbers
 class Tree:
